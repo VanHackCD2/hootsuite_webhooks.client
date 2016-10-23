@@ -19,6 +19,8 @@ class ReceivedPostsController < ApplicationController
 	def destroy
 		@received_post.destroy
 
+		@received_posts = ReceivedPost.all
+
 		render :index
 	end
 
@@ -29,6 +31,6 @@ private
 	end
 
 	def received_post_params
-	  params.require(:received_post).permit(:message)
+	  params.permit(:message)
 	end
 end

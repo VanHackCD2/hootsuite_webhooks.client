@@ -1,0 +1,34 @@
+class ReceivedPostsController < ApplicationController
+	before_action :set_received_post, only: [:show, :destroy]
+
+	def index
+		@received_posts = ReceivedPost.all
+	end
+
+	def show
+	end
+
+	def create
+		@received_post = ReceivedPost.new(received_post_params)
+
+		@received_post.save
+
+		render :index
+	end
+
+	def destroy
+		@received_post.destroy
+
+		render :index
+	end
+
+private
+
+	def set_received_post
+		@received_post = ReceivedPost.find(params[:id])
+	end
+
+	def received_post_params
+	  params.require(:received_post).permit(:message)
+	end
+end

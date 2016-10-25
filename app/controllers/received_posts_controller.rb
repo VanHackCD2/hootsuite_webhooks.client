@@ -2,7 +2,7 @@ class ReceivedPostsController < ApplicationController
 	before_action :set_received_post, only: [:show, :destroy]
 
 	def index
-		@received_posts = ReceivedPost.all
+		@received_posts = ReceivedPost.all.order(created_at: :desc)
 	end
 
 	def show
